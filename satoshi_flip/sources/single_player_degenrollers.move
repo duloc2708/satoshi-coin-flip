@@ -1,7 +1,7 @@
 // Copyright (c) Mysten Labs, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-module degenrollers::single_player_satoshi {
+module degenrollers::single_player_degenrollers {
     // imports
     use std::vector;
 
