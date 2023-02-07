@@ -1,7 +1,7 @@
 // Copyright (c) Mysten Labs, Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-module satoshi_flip::single_player_satoshi {
+module degenrollers::single_player_satoshi {
     // imports
     use std::vector;
 
@@ -13,7 +13,7 @@ module satoshi_flip::single_player_satoshi {
     use sui::tx_context::{Self, TxContext};
     use sui::transfer;
 
-    use satoshi_flip::satoshi_flip::{Self};
+    use degenrollers::degenrollers::{Self};
 
     // consts 
     // do we care about cancelation in this version?
@@ -29,7 +29,7 @@ module satoshi_flip::single_player_satoshi {
     const EInsufficientBalance: u64 = 15;
     const EGameHasAlreadyBeenCanceled: u64 = 16;
     const EInsufficientHouseBalance: u64 = 17;
-    // const ECoinBalanceNotEnough: u64 = 9; // reserved from satoshi_flip.move
+    // const ECoinBalanceNotEnough: u64 = 9; // reserved from degenrollers.move
 
     // structs
     struct Outcome has key {
@@ -156,7 +156,7 @@ module satoshi_flip::single_player_satoshi {
         assert!(balance(house_data) >= STAKE, EInsufficientHouseBalance);
         // get the user coin and convert it into a balance
         assert!(coin::value(&coin) >= STAKE, EInsufficientBalance);
-        let stake_coin = satoshi_flip::give_change(coin, STAKE, ctx);
+        let stake_coin = degenrollers::give_change(coin, STAKE, ctx);
         let stake = coin::into_balance(stake_coin);
         // get the house balance
         let house_stake = balance::split(&mut house_data.balance, STAKE);
